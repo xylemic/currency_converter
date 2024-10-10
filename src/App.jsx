@@ -13,14 +13,28 @@ function App() {
   const options = Object.keys(currencyInfo);
 
   const swap = () => {
+    // setFrom(to);
+    // setTo(from);
+    // setConvertedAmount(amount);
+    // setAmount(convertedAmount);
+
+    const tempAmount = amount;
+    const tempCurrency = from;
+
     setFrom(to);
-    setTo(from);
-    setConvertedAmount(amount);
+    setTo(tempCurrency);
     setAmount(convertedAmount);
+    setConvertedAmount(tempAmount);
   }
 
   const convert = () => {
-    setConvertedAmount(amount * currencyInfo[to]);
+    // setConvertedAmount(amount * currencyInfo[to]);
+
+    if (amount !== null) {
+      const result = (amount * currencyInfo[to]) || 0;
+
+      setConvertedAmount(result.toFixed(2));
+    }
   }
 
   return (
